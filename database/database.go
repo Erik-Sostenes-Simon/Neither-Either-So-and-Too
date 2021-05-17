@@ -14,7 +14,7 @@ import (
 func ConexionDB() *sql.DB {
 	//mysql://be4e4eceda46ed:0626d8a3@us-cdbr-east-03.cleardb.com/heroku_0f068d4410bc710?reconnect=true
 	//db, err := sql.Open("mysql", "be4e4eceda46ed:0626d8a3@us-cdbr-east-03.cleardb.com/heroku_0f068d4410bc710")
-	db, err := sql.Open("mysql", "root:Loindeseable09@tcp(127.0.0.1:3306)/Ingles")
+	db, err := sql.Open("mysql", "root:@tcp(127.0.0.1:3306)/Ingles")
 
 	if err != nil {
 		panic(err.Error())
