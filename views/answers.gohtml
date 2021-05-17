@@ -1,0 +1,254 @@
+{{define "title"}}
+  Boatswain Blog | {{index . "student"}}
+{{end}}
+
+{{define "body"}}
+    <style>
+         *{
+            font-weight: bold;
+         }
+        .header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            font-size: 100%; 
+            color: #7B1FA2;
+            width: 80%;
+            padding: .5rem;
+            margin: 0 auto 0 auto;
+            text-align: center;
+        }
+        .section {
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+             text-aling: center;
+             margin: auto;
+             width: 80%;
+             box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; 
+        }
+        .main-card {
+            width: 70%;
+            height: 100%;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            margin: 1rem;
+            padding: 1rem;
+        }
+        .section-header-incorrect{
+            background-color: rgba(188,8,53,0.2);
+            color: #EC0B43;
+            width: 100%;
+            height: 25%;
+            font-size: 1rem;
+        }
+        .section-header-correct{
+            background-color: rgba(0,160,106,0.2);
+            color: #00C985;
+            width: 100%;
+            height: 25%;
+            font-size: 1rem;
+        }
+        .section-title {
+            border-bottom: 1px solid #0075ff;
+            padding: 0 0 2px 0;
+        }
+
+        .section-replySent, .section-correctAnswer, .section-title-qualification{
+            background-color: rgba(190, 230, 243);
+            color: #379DBD;
+            width: 50%;
+            height: 20%;
+            font-size: 1rem;
+        }
+        @media only screen and (max-width: 430px) {
+             .section-replySent, .section-correctAnswer, .section-title-qualification{
+                width: 100%;
+            }
+        }
+        .container-link{
+         width: 50%;
+         height: 10%;
+         background-color: #45A3D1;
+         border: 3px solid transparent;
+         font-size: 1.5rem;
+         margin: 0 auto;
+         text-decoration: none;
+         display: flex;
+         justify-content: center;
+        }
+        .container-link:hover {
+             background-color: #1D7099 ;
+        }
+        .link{
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+    <header class="header">
+        <div class="name">Name: {{  .Name }}</div>
+        <div class="email">Email:  {{ .Email  }}</div>
+        <div class="qualificationTotal">Qualification: {{ .Qualification }}</div>
+    </header>
+    <section class="section">
+        <main class="main-card">
+            {{ with .answer1.msgCorrect }}
+                <div class="section-header-correct"> <i  class='bx bxs-message-square-check'  ></i>{{ . }}</div>
+            {{ end }}
+            {{ with .answer1.msgIncorrect }}
+                <div class="section-header-incorrect"><i class='bx bxs-message-square-circle' ></i>{{ . }}</div>
+            {{ end }}
+            <div class="section-title">{{ .answer1.title }}</div>
+            <div class="section-replySent">Your answer</div>
+            <div class="section-answer">{{ .answer1.replySent }}</div>
+            <div class="section-correctAnswer">Correct answer</div>
+            <div class="section-answer">{{ .answer1.correctAnswer  }}</div>
+            <div class="section-title-qualification">Your rating</div>
+            <div class="section-qualification">{{ .answer1.qualification }}</div>
+        </main>
+        <hr>
+        <main class="main-card">
+            {{ with .answer2.msgCorrect }}
+                <div class="section-header-correct"> <i  class='bx bxs-message-square-check'  ></i>{{ . }}</div>
+            {{ end }}
+            {{ with .answer2.msgIncorrect }}
+                <div class="section-header-incorrect"><i class='bx bxs-message-square-minus' ></i>{{ . }}</div>
+            {{ end }}
+            <div class="section-title">{{ .answer2.title }}</div>
+            <div class="section-replySent">Your answer</div>
+            <div class="section-answer">{{ .answer2.replySent }}</div>
+            <div class="section-correctAnswer">Correct answer</div>
+            <div class="section-answer">{{ .answer2.correctAnswer  }}</div>
+            <div class="section-title-qualification">Your rating</div>
+            <div class="section-qualification">{{ .answer2.qualification }}</div>
+        </main>
+        <hr>
+        <main class="main-card">
+            {{ with .answer3.msgCorrect }}
+                <div class="section-header-correct"> <i  class='bx bxs-message-square-check'  ></i>{{ . }}</div>
+            {{ end }}
+            {{ with .answer3.msgIncorrect }}
+                <div class="section-header-incorrect"><i class='bx bxs-message-square-minus' ></i>{{ . }}</div>
+            {{ end }}
+            <div class="section-title">{{ .answer3.title }}</div>
+            <div class="section-replySent">Your answer</div>
+            <div class="section-answer">{{ .answer3.replySent }}</div>
+            <div class="section-correctAnswer">Correct answer</div>
+            <div class="section-answer">{{ .answer3.correctAnswer  }}</div>
+            <div class="section-title-qualification">Your rating</div>
+            <div class="section-qualification">{{ .answer3.qualification }}</div>
+        </main>
+        <hr>
+        <main class="main-card">
+            {{ with .answer4.msgCorrect }}
+                <div class="section-header-correct"> <i  class='bx bxs-message-square-check'  ></i>{{ . }}</div>
+            {{ end }}
+            {{ with .answer4.msgIncorrect }}
+                <div class="section-header-incorrect"> <i class='bx bxs-message-square-minus' ></i>{{ . }}</div>
+            {{ end }}
+            <div class="section-title">{{ .answer4.title }}</div>
+            <div class="section-replySent">Your answer</div>
+            <div class="section-answer">{{ .answer4.replySent }}</div>
+            <div class="section-correctAnswer">Correct answer</div>
+            <div class="section-answer">{{ .answer4.correctAnswer  }}</div>
+            <div class="section-title-qualification">Your rating</div>
+            <div class="section-qualification">{{ .answer4.qualification }}</div>
+        </main>
+        <hr>
+        <main class="main-card">
+            {{ with .answer5.msgCorrect }}
+                <div class="section-header-correct"> <i  class='bx bxs-message-square-check'  ></i>{{ . }}</div>
+            {{ end }}
+            {{ with .answer5.msgIncorrect }}
+                <div class="section-header-incorrect"> <i class='bx bxs-message-square-minus' ></i>{{ . }}</div>
+            {{ end }}
+            <div class="section-title">{{ .answer5.title }}</div>
+            <div class="section-replySent">Your answer</div>
+            <div class="section-answer">{{ .answer5.replySent }}</div>
+            <div class="section-correctAnswer">Correct answer</div>
+            <div class="section-answer">{{ .answer5.correctAnswer  }}</div>
+            <div class="section-title-qualification">Your rating</div>
+            <div class="section-qualification">{{ .answer5.qualification }}</div>
+        </main>
+        <hr>
+                <main class="main-card">
+            {{ with .answer6.msgCorrect }}
+                <div class="section-header-correct"> <i  class='bx bxs-message-square-check'  ></i>{{ . }}</div>
+            {{ end }}
+            {{ with .answer6.msgIncorrect }}
+                <div class="section-header-incorrect"><i class='bx bxs-message-square-minus' ></i>{{ . }}</div>
+            {{ end }}
+            <div class="section-title">{{ .answer6.title }}</div>
+            <div class="section-replySent">Your answer</div>
+            <div class="section-answer">{{ .answer6.replySent }}</div>
+            <div class="section-correctAnswer">Correct answer</div>
+            <div class="section-answer">{{ .answer6.correctAnswer  }}</div>
+            <div class="section-title-qualification">Your rating</div>
+            <div class="section-qualification">{{ .answer6.qualification }}</div>
+        </main>
+        <hr>
+        <main class="main-card">
+            {{ with .answer7.msgCorrect }}
+                <div class="section-header-correct"> <i  class='bx bxs-message-square-check'  ></i>{{ . }}</div>
+            {{ end }}
+            {{ with .answer7.msgIncorrect }}
+                <div class="section-header-incorrect"><i class='bx bxs-message-square-minus' ></i>{{ . }}</div>
+            {{ end }}
+            <div class="section-title">{{ .answer7.title }}</div>
+            <div class="section-replySent">Your answer</div>
+            <div class="section-answer">{{ .answer7.replySent }}</div>
+            <div class="section-correctAnswer">Correct answer</div>
+            <div class="section-answer">{{ .answer7.correctAnswer  }}</div>
+            <div class="section-title-qualification">Your rating</div>
+            <div class="section-qualification">{{ .answer7.qualification }}</div>
+        </main>
+        <hr>
+        <main class="main-card">
+            {{ with .answer8.msgCorrect }}
+                <div class="section-header-correct"> <i  class='bx bxs-message-square-check'  ></i>{{ . }}</div>
+            {{ end }}
+            {{ with .answer8.msgIncorrect }}
+                <div class="section-header-incorrect"> <i class='bx bxs-message-square-minus' ></i>{{ . }}</div>
+            {{ end }}
+            <div class="section-title">{{ .answer8.title }}</div>
+            <div class="section-replySent">Your answer</div>
+            <div class="section-answer">{{ .answer8.replySent }}</div>
+            <div class="section-correctAnswer">Correct answer</div>
+            <div class="section-answer">{{ .answer8.correctAnswer  }}</div>
+            <div class="section-title-qualification">Your rating</div>
+            <div class="section-qualification">{{ .answer8.qualification }}</div>
+        </main>
+        <hr>
+        <main class="main-card">
+            {{ with .answer9.msgCorrect }}
+                <div class="section-header-correct"> <i  class='bx bxs-message-square-check'  ></i>{{ . }}</div>
+            {{ end }}
+            {{ with .answer9.msgIncorrect }}
+                <div class="section-header-incorrect"><i class='bx bxs-message-square-minus' ></i>{{ . }}</div>
+            {{ end }}
+            <div class="section-title">{{ .answer9.title }}</div>
+            <div class="section-replySent">Your answer</div>
+            <div class="section-answer">{{ .answer9.replySent }}</div>
+            <div class="section-correctAnswer">Correct answer</div>
+            <div class="section-answer">{{ .answer9.correctAnswer  }}</div>
+            <div class="section-title-qualification">Your rating</div>
+            <div class="section-qualification">{{ .answer9.qualification }}</div>
+        </main>
+        <hr>
+        <main class="main-card">
+            {{ with .answer10.msgCorrect }}
+                <div class="section-header-correct"> <i  class='bx bxs-message-square-check'  ></i>{{ . }}</div>
+            {{ end }}
+            {{ with .answer10.msgIncorrect }}
+                <div class="section-header-incorrect"> <i class='bx bxs-message-square-minus' ></i>{{ . }}</div>
+            {{ end }}
+            <div class="section-title">{{ .answer10.title }}</div>
+            <div class="section-replySent">Your answer</div>
+            <div class="section-answer">{{ .answer10.replySent }}</div>
+            <div class="section-correctAnswer">Correct answer</div>
+            <div class="section-answer">{{ .answer10.correctAnswer  }}</div>
+            <div class="section-title-qualification">Your rating</div>
+            <div class="section-qualification">{{ .answer10.qualification }}</div>
+        </main>
+    </section>
+    <div class="container-link"><a class="link" href="/v1/ingles/students">Page render</a></div>
+{{end}}

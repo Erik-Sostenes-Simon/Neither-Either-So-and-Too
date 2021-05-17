@@ -1,0 +1,92 @@
+{{define "title"}}
+  Boatswain Blog | {{index . "name"}}
+{{end}}
+
+{{define "body"}}
+  <style>
+    * {
+        border-collapse:collapse;
+        border-spacing : 0;
+         text-aling: center;
+    }
+      .container {
+        margin: auto;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+          width: 60%;
+          min-width: 400px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+      table {
+        width: 100%;
+        color: white;
+        background-color:white;
+        color: black;
+        margin: 1rem;
+        font-size: 1rem;
+      }
+      @media only screen and (max-width: 430px) {
+        table {
+           font-size: 1rem;
+           width: 350px;
+           min-width: 330px;
+          min-width: 300px;
+          min-height: 600px;
+        }
+    }
+      thead {
+       background-color: rgb(61, 68, 73);
+       color: white;
+      }
+      tr {
+        border-bottom: 2px solid tomato;
+      }
+      tr:hover {
+        background-color: #3282b8;
+      }
+      th, td {
+        text-align: center;
+      }
+         .container-link{
+         width: 40%;
+         height: 5%;
+         background-color: #45A3D1;
+         border: 3px solid transparent;
+         font-size: 1.5rem;
+         margin: 0 auto;
+         text-decoration: none;
+         display: flex;
+         justify-content: center;
+         text-aling: center;
+        }
+        .container-link:hover {
+             background-color: #1D7099 ;
+        }
+        .link{
+            color: white;
+            text-decoration: none;
+        }
+  </style>
+  <div class="container">
+    <table>
+      <thead>
+        <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Qualification</th>
+        </tr>
+      </thead>
+      <tbody>
+      {{ range .list }}
+      <tr>
+        <td class="cell">  {{ .Name }}</td>
+        <td class="cell"> {{ .Email }} </td>
+        <td class="cell">  {{  .Qualification  }} </td>
+      </tr>
+      {{ end }}
+      </tbody>
+    </table>
+  </div> 
+  <div class="container-link"><a class="link" href="/v1/ingles/">Page render</a></div>
+{{end}}

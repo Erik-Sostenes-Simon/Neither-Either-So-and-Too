@@ -1,0 +1,232 @@
+{{define "title"}}
+  Boatswain Blog | {{index . "name"}}
+{{end}}
+
+{{define "body"}}
+<style>
+*{
+     list-style: none;
+     text-decoration: none;
+     font-weight: bold;
+   }
+   header {
+          border-bottom: 3px solid tomato;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-content: center;
+          align-items: center;
+          text-aling: center;
+          height: 150px;
+   }
+   .title {
+     padding: .5rem;
+     font-size: 2.5rem;
+     color: #7B1FA2;
+   }
+   .title::before, .title::after {
+          content: "";
+          display:block;
+          height: 5px;
+          flex: 1;
+          background: linear-gradient(to left, #7B1FA2, white);
+          margin-right: .5em;
+   }
+
+   .title::after {
+          background: linear-gradient(to right, #7B1FA2, white);
+          margin-right: .5em;
+          text-align: center;
+   }
+
+   .alert {
+     background-color: tomato;
+     padding: .5rem;
+     height: 20%;
+     font-size: 1rem;
+   }
+   .label-title {
+     color: #D81B60 ;
+   }
+   .container-username {
+       display: flex;
+       flex-direction: column;
+       height: 50%;
+       border-bottom: 3px dotted tomato;
+       padding: 1rem;
+   }
+   .error-username {
+     color: tomato;
+     font-size: 1rem;
+   }
+   .error-email {
+      color: tomato;
+      font-size: 1rem;
+   }
+    .container-input  {
+       height: 100%;
+       box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.3);
+       padding: 1rem;
+   }
+   .input {
+      width: 30%;
+      background: #fff;
+      border-radius: 1px;
+      border: 3px solid transparent;
+      height: 20px;
+      transition: .3s ease all;
+      box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.4);
+      outline: none;	
+   }
+   input:focus {
+    border: 3px solid #0075ff;
+   }
+   @media only screen and (max-width: 430px) {
+        .input {
+           width: 100%;
+        }
+    }
+   .input-radio {
+      width: 10%;
+      background: #fff;
+      border-radius: 1px;
+      height: 20px;
+      transition: .3s ease all;
+      border: 2px solid teal;
+      outline: none;	
+   }
+   input:focus {
+    border: 3px solid #0075ff;
+   }
+   .button-submit {
+         width: 25%;
+         height: 10%;
+         background-color: #45A3D1;
+         border: 3px solid transparent;
+         color: white;
+         font-size: 1.5rem;
+         margin-left: 38%;
+         margin-top: .5rem;
+         margin-bottom: .5rem;
+   }
+   .button-submit:hover {
+         background-color: #1D7099 ;
+   }
+</style>
+<header>
+  <h1 class="title">Neither, Either, So and Too</h1>
+  {{ with .warning}}
+      <h2 class="alert">{{ . }}</h2>
+  {{ end }}
+</header>
+
+  <div class="container">
+    <form class="form" action="/v1/ingles/answers" method="POST"   id=" formulario ">
+      <div class="container-username">
+         <label>Name :
+           <input type="text" name="name" class="input"> </input>
+         </label>
+          {{ with .error.Content }}
+            <div class="error-username">{{ . }}</div>
+          {{ end }}
+          <br>
+         <label>Your Email: 
+            <input type="email" name="email" class="input">
+         </label>
+         {{ with .error.Email }}
+            <div class="error-email">{{ . }}</div>
+         {{ end }}
+      </div>
+     
+        <div class="container-input">
+            <label class="label-title">{{ .question0 }}</label>
+            <br>
+            {{ range $i, $answers :=    .answers0 }}
+            <input type="radio" id={{ $i }}  value={{ $answers }}  name="answer0" class="input-radio">
+            <label for={{ $i }}> {{ $answers }}</label><br>
+            {{ end }}
+        </div>
+        <div  class="container-input">
+            <label class="label-title">{{ .question1 }}</label>
+            <input type="text"   name="answer1" class="input">
+            <ul>
+              {{  range $i, $answers :=    .answers1  }}
+                <li>{{ $answers }}</li>
+              {{ end }}
+            </ul>
+        </div>
+        <div  class="container-input">
+          <label  class="label-title" for="list1">{{ .question2 }}</label>
+          <input list="browsers1" name="list1" id="list1" class="input">
+
+          <datalist id="browsers1">
+            {{ range $i, $answers :=    .answers2 }}
+              <option  name = {{ $answers }} value={{ $answers }}>
+            {{ end }}
+          </datalist>
+        </div>
+        <div  class="container-input">
+          <label class="label-title" for="list">{{ .question3 }}</label>
+          <input list="browsers" name="list" id="list" class="input">
+          <datalist id="browsers">
+            {{ range $i, $answers :=    .answers3 }}
+                 <option  name = {{ $answers }} value={{ $answers }}>
+            {{ end }}
+          </datalist>
+        </div>
+        <div  class="container-input">
+            <label class="label-title">{{ .question4 }}</label>
+            <br>
+            {{ range $i, $answers :=    .answers4 }}
+             <input type="radio" id={{ $i }}  value={{ $answers }}  name="answer4" class="input-radio">
+             <label for={{ $i }}> {{ $answers }}</label><br>
+            {{ end }}
+        </div>
+                <div class="container-input">
+            <label class="label-title">{{ .question5 }}</label>
+            <br>
+            {{ range $i, $answers :=    .answers5 }}
+            <input type="radio" id={{ $i }}  value={{ $answers }}  name="answer5" class="input-radio">
+            <label for={{ $i }}> {{ $answers }}</label><br>
+            {{ end }}
+        </div>
+        <div  class="container-input">
+            <label class="label-title">{{ .question6 }}</label>
+            <input type="text"   name="answer6" class="input">
+            <ul>
+              {{  range $i, $answers :=    .answers6  }}
+                <li>{{ $answers }}</li>
+              {{ end }}
+            </ul>
+        </div>
+        <div  class="container-input">
+          <label  class="label-title" for="list7">{{ .question7 }}</label>
+          <input list="browsers7" name="list7" id="list7" class="input">
+
+          <datalist id="browsers7">
+            {{ range $i, $answers :=    .answers7 }}
+              <option  name = {{ $answers }} value={{ $answers }}>
+            {{ end }}
+          </datalist>
+        </div>
+        <div  class="container-input">
+          <label class="label-title" for="list8">{{ .question8 }}</label>
+          <input list="browsers8" name="list8" id="list8" class="input">
+          <datalist id="browsers8">
+            {{ range $i, $answers :=    .answers8 }}
+                 <option  name = {{ $answers }} value={{ $answers }}>
+            {{ end }}
+          </datalist>
+        </div>
+        <div  class="container-input">
+            <label class="label-title">{{ .question9 }}</label>
+            <br>
+            {{ range $i, $answers :=    .answers9 }}
+             <input type="radio" id={{ $i }}  value={{ $answers }}  name="answer9" class="input-radio">
+             <label for={{ $i }}> {{ $answers }}</label><br>
+            {{ end }}
+        </div>
+       <input class="button-submit" type="submit" value="Enviar">
+   </form>
+  </div>  
+{{end}}
